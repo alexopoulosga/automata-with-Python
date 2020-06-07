@@ -1,0 +1,26 @@
+def accepts(transitions,initial,accepting,s):
+    state = initial
+    for c in s:
+        state = transitions[state][c]
+    return state in accepting
+
+dfa = {0:{'0':0, '1':1},
+       1:{'0':2, '1':0},
+       2:{'0':1, '1':2}}
+
+accepts(dfa,0,{0},'1011101')
+accepts(dfa,0,{0},'10111011')
+
+###
+
+def run(transitions, initial, s):
+    state = initial
+    for c in s:
+        state = transitions[state][c]
+    return state 
+
+dfa = [{'A':0, 'B':1},
+       {'A':2, 'B':0},
+       {'A':1, 'B':2}]
+
+print(run(dfa,0,'BABBBAB'))
